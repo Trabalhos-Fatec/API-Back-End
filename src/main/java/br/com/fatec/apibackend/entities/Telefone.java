@@ -6,26 +6,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
-@Table(name = "auth")
-
-public class Autorizacao {
+@Entity
+@Table(name = "telefone")
+public class Telefone {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "auth_id")
+  @Column(name = "tel_id")
   private Long id;
 
-  @NotNull
-  @Column(name = "auth_nome")
-  private String nome;
+  @Column(name = "telefone")
+  private String telefone;
 
 }

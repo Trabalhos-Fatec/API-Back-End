@@ -1,12 +1,13 @@
 package br.com.fatec.apibackend.repository;
 
+
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.stereotype.Repository;
-import br.com.fatec.apibackend.entities.Usuario;
+import br.com.fatec.apibackend.entities.Autorizacao;
 
 @Repository
-public interface UserRepository extends JpaRepositoryImplementation<Usuario, Long> {
+public interface AuthRepository extends JpaRepositoryImplementation<Autorizacao, Long> {
 
-  public Usuario findByNome(String nome);
+  public Autorizacao findByNome(String nome);
 
 }
