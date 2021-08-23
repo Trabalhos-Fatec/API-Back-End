@@ -55,6 +55,25 @@ class ApiBackendApplicationTests {
 
   @Test
   void cadastroUser() {
+    cadastroDefault();
+
+    assertNotNull(userRepo.findByNome("Carinha"));
+
+  }
+
+  @Test
+  void pesquisaTest() {
+    cadastroUser();
+    assertNotNull(userRepo.findByAutorizacaoNome("teste"));
+  }
+
+  @Test
+  void pesquisaAvancadaTest() {
+    cadastroUser();
+    assertNotNull(userRepo.findByDadosEmailEmail("SouSpam@uol.com.br"));
+  }
+
+  void cadastroDefault() {
     Autorizacao auth = new Autorizacao();
     auth.setNome("teste");
 
@@ -81,21 +100,5 @@ class ApiBackendApplicationTests {
     user.setDados(dadosRepo.save(dados));
 
     userServ.cadastroUsuario(user);
-
-    assertNotNull(userRepo.findByNome("Carinha"));
-
   }
-
-  @Test
-  void pesquisaTest() {
-    cadastroUser();
-    assertNotNull(userRepo.findByAutorizacaoNome("teste"));
-  }
-
-  @Test
-  void pesquisaAvancadaTest() {
-    cadastroUser();
-    assertNotNull(userRepo.findByDadosEmailEmail("SouSpam@uol.com.br"));
-  }
-
 }
