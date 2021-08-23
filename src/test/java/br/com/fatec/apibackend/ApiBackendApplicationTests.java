@@ -1,6 +1,8 @@
 package br.com.fatec.apibackend;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.ArrayList;
 import java.util.HashSet;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -64,10 +66,10 @@ class ApiBackendApplicationTests {
 
     DadosUsuario dados = new DadosUsuario();
 
-    dados.setEmail(new HashSet<Email>());
+    dados.setEmail(new ArrayList<Email>());
     dados.getEmail().add(emailRepo.save(email));
 
-    dados.setTelefone(new HashSet<Telefone>());
+    dados.setTelefone(new ArrayList<Telefone>());
     dados.getTelefone().add(tellRepo.save(tel));
 
     Usuario user = new Usuario();
@@ -75,13 +77,25 @@ class ApiBackendApplicationTests {
     user.setAtividade(true);
     user.setSenha("senha");
     user.setAutorizacao(new HashSet<Autorizacao>());
-    user.getAutorizacao().add(authRepo.save(auth));
+    user.getAutorizacao().add(auth);
     user.setDados(dadosRepo.save(dados));
 
     userServ.cadastroUsuario(user);
 
-    assertFalse(userRepo.findByNome("Carinha").getNome().isEmpty());
+    assertNotNull(userRepo.findByNome("Carinha"));
 
+  }
+
+  @Test
+  void pesquisaTest() {
+    cadastroUser();
+    assertNotNull(userRepo.findByAutorizacaoNome("teste"));
+  }
+
+  @Test
+  void pesquisaAvancadaTest() {
+    cadastroUser();
+    assertNotNull(userRepo.findByDadosEmailEmail("SouSpam@uol.com.br"));
   }
 
 }

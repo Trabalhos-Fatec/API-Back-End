@@ -44,9 +44,7 @@ public class Usuario {
       inverseJoinColumns = {@JoinColumn(name = "auth_id")})
   private Set<Autorizacao> autorizacao;
 
-  @OneToOne(fetch = FetchType.LAZY)
-  @JoinTable(name = "usuario_dados", joinColumns = {@JoinColumn(name = "usuario_id")},
-      inverseJoinColumns = {@JoinColumn(name = "data_user_id")})
+  @OneToOne(fetch = FetchType.LAZY, mappedBy = "usuario")
   private DadosUsuario dados;
 
 }
