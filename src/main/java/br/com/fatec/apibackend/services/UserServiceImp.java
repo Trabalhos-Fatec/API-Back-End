@@ -9,7 +9,6 @@ import br.com.fatec.apibackend.repository.AuthRepository;
 import br.com.fatec.apibackend.repository.UserRepository;
 
 @Service
-@Transactional
 public class UserServiceImp implements UserService {
 
   @Autowired
@@ -18,6 +17,7 @@ public class UserServiceImp implements UserService {
   @Autowired
   private AuthRepository authRepo;
 
+  @Transactional
   public Usuario cadastroUsuario(Usuario user) {
     for (Autorizacao auth : user.getAutorizacao()) {
       if (authRepo.findByNome(auth.getNome()) == null) {

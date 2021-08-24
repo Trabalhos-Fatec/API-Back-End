@@ -63,13 +63,13 @@ class ApiBackendApplicationTests {
 
   @Test
   void pesquisaTest() {
-    cadastroUser();
-    assertNotNull(userRepo.findByAutorizacaoNome("teste"));
+    cadastroDefault();
+    assertNotNull(userRepo.findByDadosEmailEmail("SouSpam@uol.com.br"));
   }
 
   @Test
   void pesquisaAvancadaTest() {
-    cadastroUser();
+    cadastroDefault();
     assertNotNull(userRepo.findByAutorizacaoNomeAndAtividade("teste", true));
   }
 
