@@ -70,7 +70,7 @@ class ApiBackendApplicationTests {
   @Test
   void pesquisaAvancadaTest() {
     cadastroUser();
-    assertNotNull(userRepo.findByDadosEmailEmail("SouSpam@uol.com.br"));
+    assertNotNull(userRepo.findByAutorizacaoNomeAndAtividade("teste", true));
   }
 
   void cadastroDefault() {
